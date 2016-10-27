@@ -9,10 +9,10 @@ PROVIDER=virtualbox
 UNAME=`uname`
 
 function usage {
-	echo "Usage: $0 [-libvirt] latest" '[nightly|weekly]'
+	echo "Usage: $0 [-libvirt|-hyperv] latest" '[nightly|weekly]'
   echo "             Uses latest nightly (virtualbox) by default"
-  echo "       $0 [-libvirt] use build_dir_url"
-  echo "             Uses cdk.zip and virtualbox (or libvirt) vagrant box found at build_dir_url"
+  echo "       $0 [-libvirt|-hyperv] use build_dir_url"
+  echo "             Uses cdk.zip and virtualbox (or libvirt or hyper-v) vagrant box found at build_dir_url"
   exit 1
 }
 
@@ -27,6 +27,9 @@ do
 	case $1 in
 		-libvirt)
 			PROVIDER=libvirt
+			;;
+		-hyperv)
+			PROVIDER=hyperv
 			;;
 	  latest)
 	    shift
